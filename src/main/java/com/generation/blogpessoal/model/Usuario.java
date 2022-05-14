@@ -16,9 +16,9 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-    @Entity
-    @Table(name = "tb_usuarios")
-    public class Usuario {
+@Entity
+@Table(name = "tb_usuarios")
+public class Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,6 +40,21 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("usuario")
 	private List<Postagem> postagem;
+
+	// Primeiro método Construtor
+
+	public Usuario(Long id, String nome, String usuario, String senha, String foto) {
+		this.id = id;
+		this.nome = nome;
+		this.usuario = usuario;
+		this.senha = senha;
+		this.foto = foto;
+	}
+
+	// Segundo método Construtor
+
+	public Usuario() {
+	}
 
 	public Long getId() {
 		return id;
